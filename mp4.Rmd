@@ -7,5 +7,25 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(mdsr)
+library(RMySQL)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(mosaic)
+library(Stat2Data)
+#install.packages("lmtest")
+library(lmtest)
 ```
 
+
+```{r}
+# data exploration
+db<-dbConnect_scidb(dbname = "imdb")
+dbListTables(db)
+
+
+
+
+
+```
