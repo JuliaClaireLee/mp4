@@ -12,7 +12,7 @@ library(RMySQL)
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
-library(mosaic) 
+library(mosaic)
 ```
 
 
