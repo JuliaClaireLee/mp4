@@ -13,9 +13,6 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(mosaic)
-library(Stat2Data)
-#install.packages("lmtest")
-library(lmtest)
 ```
 
 
@@ -28,14 +25,62 @@ db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating
 FROM title t
+JOIN company_name AS cn on movie_companies cn.id = mc.company_id
+JOIN movie_companies AS mc on mc.movie_id=t.id
 JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
 WHERE t.kind_id = 1
-  AND mi1.info_type_id = 100
+ AND mi1.info_type_id = 100
   AND mi2.info_type_id = 101
   AND mi1.info > 100000
   AND t.production_year < 20000
 ORDER BY mi2.info
 LIMIT 10;")
-
 ```
+
+
+Production company
+```{r}
+db %>%
+  dbGetQuery("SELECT title.title, company_name.name, mi1.info AS votes, mi2.info AS rating
+FROM movie_companies
+JOIN company_name
+ON movie_companies.company_id = company_name.id
+JOIN title
+ON title.id = movie_companies.movie_id
+JOIN movie_info_idx AS mi1 ON mi1.movie_id = title.id
+JOIN movie_info_idx AS mi2 ON mi2.movie_id = title.id
+WHERE title.kind_id=1
+AND mi1.info_type_id = 100
+  AND mi2.info_type_id = 101
+  AND mi1.info > 100000
+AND company_type_id=2
+ORDER BY mi2.info
+LIMIT 10")
+```
+
+Distributors
+```{r}
+db %>%
+  dbGetQuery("SELECT title.title, company_name.name, mi1.info AS votes, mi2.info AS rating
+FROM movie_companies
+JOIN company_name
+ON movie_companies.company_id = company_name.id
+JOIN title
+ON title.id = movie_companies.movie_id
+JOIN movie_info_idx AS mi1 ON mi1.movie_id = title.id
+JOIN movie_info_idx AS mi2 ON mi2.movie_id = title.id
+WHERE title.kind_id=1
+AND mi1.info_type_id = 100
+  AND mi2.info_type_id = 101
+  AND mi1.info > 100000
+AND company_type_id=1
+ORDER BY mi2.info
+LIMIT 10")
+```
+
+
+
+
+
+
