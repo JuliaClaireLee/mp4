@@ -81,9 +81,3 @@ AND company_type_id=1
 ORDER BY mi2.info
 LIMIT 10")
 ```
-
-
-
-
-
-
