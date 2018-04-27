@@ -1,8 +1,11 @@
 ---
 title: "mp4"
-author: "Julia Lee"
+author: "Julia Lee, Stella Li & Irene Ryan"
 date: "4/23/2018"
-output: html_document
+output: 
+  html_document:
+    theme: cosmo 
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
