@@ -41,9 +41,15 @@ WHERE t.kind_id = 1
   AND t.production_year > 2000
 ORDER BY mi2.info
 LIMIT 30;")
-View(bad_movies)
-
+#View(bad_movies)
+#class(bad_movies)
+#dim(bad_movies)
+bad_movies$votes<-as.numeric(bad_movies$votes)
+bad_movies$rating <-as.numeric(bad_movies$rating)
+ggplot(data = bad_movies, aes(x = production_year, y = rating )) +
+  geom_point()
 ```
+
 
 ```{r}
 db %>%
