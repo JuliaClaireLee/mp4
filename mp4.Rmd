@@ -30,8 +30,8 @@ dbListTables(db)
 ```{r}
 fiftyshadesgross<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS gross
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS Boxoffice, n.name AS director, n2.name AS writer 
+  mi1.info AS votes, mi2.info AS rating, mi3.info AS gross,
+n.name AS director, n2.name AS writer 
 FROM title t
 Join cast_info AS ci on ci.movie_id = t.id
 Join cast_info AS ci2 on ci2.movie_id = t.id
@@ -50,7 +50,6 @@ WHERE t.kind_id = 1
   AND t.production_year > 2000
 GROUP BY t.title
 ORDER BY mi2.info
-<<<<<<< HEAD
 LIMIT 26;")
 ```
 parsing gross
@@ -65,8 +64,13 @@ parsedgross<-usaparse %>%
          gross = parse_number(gross_string))
 
 
-parseddate<- usaparse%>%
+parsed<- usaparse%>%
   mutate(the_date_string = str_extract(gross, "\\([0-9]+ [A-Za-z]+ [0-9]{4}\\)"), the_date = parse_datetime(the_date_string, format = "(%d %B %Y)")) %>%
+  mutate(gross_string = str_extract(gross, "^\\$[0-9]+,[0-9]{3},[0-9]{3}"),
+         gross = parse_number(gross_string)) %>%
   arrange(desc(gross))
+
+ggplot(data=parsed, aes(x=the_date, y=gross))+
+         geom_line()
 ```
 
