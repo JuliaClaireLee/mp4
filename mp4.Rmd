@@ -1,6 +1,6 @@
 ---
 title: "mp4"
-author: "Julia Lee, Stella Li & Irene Ryan"
+author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output: 
   html_document:
@@ -31,7 +31,12 @@ dbListTables(db)
 fiftyshadesgross<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS gross
+  mi1.info AS votes, mi2.info AS rating, mi3.info AS Boxoffice, n.name AS director, n2.name AS writer 
 FROM title t
+Join cast_info AS ci on ci.movie_id = t.id
+Join cast_info AS ci2 on ci2.movie_id = t.id
+JOIN name AS n2  on n2.id = ci2.person_id
+JOIN name AS n  on n.id = ci.person_id
 JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
 JOIN movie_info AS mi3 ON mi3.movie_id = t.id
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
@@ -39,22 +44,17 @@ WHERE t.kind_id = 1
   AND mi1.info_type_id = 100
   AND mi2.info_type_id = 101
   AND mi3.info_type_id = 107
+  AND ci.role_id = 8
+  AND ci2.role_id = 4 
   AND mi1.info > 100000
   AND t.production_year > 2000
+GROUP BY t.title
 ORDER BY mi2.info
+<<<<<<< HEAD
 LIMIT 26;")
-#View(bad_movies)
-#class(bad_movies)
-#dim(bad_movies)
 ```
-
-bad_movies$votes<-as.numeric(bad_movies$votes)
-bad_movies$rating <-as.numeric(bad_movies$rating)
-ggplot(data = bad_movies, aes(x = votes, y = rating )) +
-  geom_point()
-
-
 parsing gross
+
 ```{r}
 usaparse <- fiftyshadesgross %>%
   filter(grepl("\\(USA\\)", gross))
@@ -69,13 +69,4 @@ parseddate<- usaparse%>%
   mutate(the_date_string = str_extract(gross, "\\([0-9]+ [A-Za-z]+ [0-9]{4}\\)"), the_date = parse_datetime(the_date_string, format = "(%d %B %Y)")) %>%
   arrange(desc(gross))
 ```
-
-
-
-
-
-
-
-
-
 
