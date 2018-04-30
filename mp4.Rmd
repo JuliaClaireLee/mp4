@@ -30,7 +30,7 @@ dbListTables(db)
 ```{r}
 worstmovies<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS gross
+  mi1.info AS votes, mi2.info AS rating, mi3.info AS gross, n.name AS director, n2.name AS writer 
 FROM title t
 Join cast_info AS ci on ci.movie_id = t.id
 Join cast_info AS ci2 on ci2.movie_id = t.id
