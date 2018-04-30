@@ -46,7 +46,7 @@ LIMIT 30;")
 #dim(bad_movies)
 bad_movies$votes<-as.numeric(bad_movies$votes)
 bad_movies$rating <-as.numeric(bad_movies$rating)
-ggplot(data = bad_movies, aes(x = production_year, y = rating )) +
+ggplot(data = bad_movies, aes(x = votes, y = rating )) +
   geom_point()
 ```
 
