@@ -47,6 +47,7 @@ WHERE t.kind_id = 1
   AND ci2.role_id = 4 
   AND mi1.info > 100000
   AND t.production_year > 2000
+GROUP BY t.title
 ORDER BY mi2.info
 LIMIT 30;")
 View(bad_movies)
