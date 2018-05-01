@@ -121,7 +121,7 @@ OR t.title = 'Star Trek II: The Wrath of Khan'
 OR t.title = 'Temple of Doom'
 OR t.title = 'The Godfather: Part II'
 OR t.title =  'Toy Story 2'
-OR t.title =  'Lion King II: Simba's Pride'
+OR t.title LIKE  '%Lion King II%'
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
