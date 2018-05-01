@@ -48,7 +48,7 @@ WHERE t.kind_id = 1
   AND t.production_year > 1970
 GROUP BY t.title
 ORDER BY mi2.info DESC
-LIMIT 30;")
+LIMIT 100;")
 ```
 
 parsing gross for 50 shades
@@ -119,4 +119,39 @@ group by t.title
 ORDER BY mi2.info;")
 View(sequels)
 ```
+
+
+Batman Begins and The Dark Knight
+
+The Godfather and the Godfather II
+
+The Lion King 1 and 2
+
+Lord of the Rings The Fellowship of the Ring and The Two Towers
+
+Star Wars A New Hope and Star Wars The Empire Strikes Back
+
+The Matrix and The Matrix Reloaded
+
+Alien and Aliens
+
+Blade Runner and Blade Runner 2049
+
+Indiana Jones Raiders of the Lost Arc and Temple of Doom
+
+Trainspotting and T2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
