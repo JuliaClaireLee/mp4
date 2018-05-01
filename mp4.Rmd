@@ -119,9 +119,13 @@ WHERE t.kind_id = 1
 AND t.title = 'Men in Black II'
 OR t.title = 'The Hangover Part II'
 OR t.title = 'Star Wars: Episode V - The Empire Strikes Back'
-OR t.title = 'Jurassic Park III'
+OR t.title = 'Jurassic Park II'
 OR t.title = 'The Dark Knight'
 OR t.title = 'Star Trek II: The Wrath of Khan'
+OR t.title = 'Temple of Doom'
+OR t.title = 'The Godfather: Part II'
+OR t.title =  'Toy Story 2'
+OR t.title =  'Lion King II: Simba's Pride'
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
