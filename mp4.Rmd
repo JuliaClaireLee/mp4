@@ -116,8 +116,9 @@ WHERE t.kind_id = 1
   AND ci.role_id = 8
   AND ci2.role_id = 4 
 AND t.title = 'Men in Black II'
-AND t.title = 'The Hangover Part III'
-AND t.title = 'Shrek the Third'
+OR t.title = 'The Hangover Part III'
+OR t.title = 'Shrek the Third'
+OR t.title ='Pirates of the Caribbean: On Stranger Tides'
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
