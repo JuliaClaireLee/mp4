@@ -22,7 +22,6 @@ library(mosaic)
 ```{r}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
-
 ```
 
 #Worst movies ordered by rating
@@ -48,7 +47,7 @@ WHERE t.kind_id = 1
   AND mi1.info > 100000
   AND t.production_year > 2000
 GROUP BY t.title
-ORDER BY mi2.info
+ORDER BY mi2.info DESC
 LIMIT 30;")
 ```
 
