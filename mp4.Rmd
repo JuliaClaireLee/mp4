@@ -48,12 +48,8 @@ WHERE t.kind_id = 1
   AND t.production_year > 1970
 GROUP BY t.title
 ORDER BY mi2.info DESC
-<<<<<<< HEAD
 LIMIT 100;")
-=======
-LIMIT 30;")
 
->>>>>>> b0f9570d4b41ebf58e1ecb0f85098c0734641da5
 ```
 
 parsing gross for 50 shades
@@ -127,12 +123,11 @@ ORDER BY mi2.info;")
 View(sequels)
 ```
 
-
 Batman Begins and The Dark Knight
 
 The Godfather and the Godfather II
 
-The Lion King 1 and 2
+The Lion King and Lion King 2: Simba's Pride
 
 Lord of the Rings The Fellowship of the Ring and The Two Towers
 
@@ -148,9 +143,15 @@ Indiana Jones Raiders of the Lost Arc and Temple of Doom
 
 Trainspotting and T2
 
+Star Trek and Star Trek II: The Wrath of Khan
 
+Jurassic Park 1 and 2
 
+Toy Story and Toy Story 2
 
+Men in Black I and II
+
+The Hangover Part 1 and 2
 
 
 
