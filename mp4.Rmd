@@ -117,6 +117,7 @@ OR t.title = 'The Hangover Part II'
 OR t.title = 'Star Wars: Episode V - The Empire Strikes Back'
 OR t.title = 'Jurassic Park III'
 OR t.title = 'The Dark Knight'
+OR t.title = 'Star Trek II: The Wrath of Khan'
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
