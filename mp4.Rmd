@@ -102,24 +102,20 @@ ggplot(data=parsed, aes(x=the_date, y=gross))+
 ```{r}
 sequels<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, n.name AS director, n2.name AS writer 
+  mi1.info AS votes, mi2.info AS rating, n.name AS director, 
 FROM title t
 Join cast_info AS ci on ci.movie_id = t.id
-Join cast_info AS ci2 on ci2.movie_id = t.id
-JOIN name AS n2  on n2.id = ci2.person_id
-JOIN name AS n  on n.id = ci.person_id
+JOIN name AS n on n.id = ci.person_id
 JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
 WHERE t.kind_id = 1
   AND mi1.info_type_id = 100
   AND mi2.info_type_id = 101
   AND ci.role_id = 8
-  AND ci2.role_id = 4 
 AND t.title = 'Men in Black II'
-OR t.title = 'The Hangover Part III'
+OR t.title = 'The Hangover Part II'
 OR t.title = 'Shrek the Third'
-OR t.title ='Pirates of the Caribbean: On Stranger Tides'
-group by t.title
+OR t.title = 'The Twilight Saga: New Moon'
 ORDER BY mi2.info;")
 View(sequels)
 ```
