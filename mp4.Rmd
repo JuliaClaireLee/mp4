@@ -48,7 +48,12 @@ WHERE t.kind_id = 1
   AND t.production_year > 1970
 GROUP BY t.title
 ORDER BY mi2.info DESC
+<<<<<<< HEAD
 LIMIT 100;")
+=======
+LIMIT 30;")
+
+>>>>>>> b0f9570d4b41ebf58e1ecb0f85098c0734641da5
 ```
 
 parsing gross for 50 shades
@@ -113,8 +118,10 @@ WHERE t.kind_id = 1
   AND ci.role_id = 8
 AND t.title = 'Men in Black II'
 OR t.title = 'The Hangover Part II'
-OR t.title = 'Shrek the Third'
-OR t.title = 'The Twilight Saga: New Moon'
+OR t.title = 'Star Wars: Episode V - The Empire Strikes Back'
+OR t.title = 'Jurassic Park III'
+OR t.title = 'The Dark Knight'
+OR t.title = 'Star Trek II: The Wrath of Khan'
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
