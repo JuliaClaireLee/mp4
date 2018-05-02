@@ -127,7 +127,6 @@ OR t.title =  'T2'
 OR t.title = 'Blade Runner 2049'
 OR t.id = 695024
 OR t.title = 'The Lord of the Rings: The Two Towers'
-OR t.title = 
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
