@@ -229,18 +229,21 @@ View(Remakes_and_orginals)
 ```
 
 
+
 ```{r}
-Remakes%>%
+list<-orginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
   filter(number==2)
 
-orginals%>%
+final<-list%>%
+  inner_join(orginals, by="title")
+
+final%>%
   group_by(title)%>%
-  summarise(number=n())%>%
-  filter(number==2)
+  summarise(distinctyr=n_distinct(production_year))%>%
+  filter(distinctyr==2)
 ```
-
 
 
 
