@@ -161,10 +161,14 @@ Toy Story and Toy Story 2
 Men in Black I and II
 
 The Hangover Part 1 and 2
+```{r}
+series<-db %>%
+  dbGetQuer("select t.title
+from imdb.aka_title t 
+where t.phonetic_code = 's62'
+And t.kind_id = 1;")
 
-
-
-
+```
 
 
 
