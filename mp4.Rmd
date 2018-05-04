@@ -198,8 +198,11 @@ WHERE t.kind_id = 1
   AND mi2.info_type_id = 101
   AND mi3.info_type_id = 105
 AND mi4.info = 'English'
+AND mi1.info >25000
 group by t.id;") 
 View(orginals)
+
+fav_stats(orginals$votes)
 
 ```
 
