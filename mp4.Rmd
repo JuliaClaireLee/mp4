@@ -224,11 +224,10 @@ WHERE t.kind_id = 1
   AND mi2.info_type_id = 101
   AND mi4.info_type_id = 4
   AND mi3.info_type_id = 105
-AND mi1.info > 25000
 AND L.link_type_id = 3
 AND mi4.info = 'English'
 group by t.id
-Limit 276;") 
+Limit 500;") 
 View(Remakes_and_orginals)
 ```
 
@@ -238,7 +237,6 @@ Remakes_and_orginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
   filter(number==2)
-
 ```
 
 
