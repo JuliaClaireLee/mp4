@@ -19,14 +19,14 @@ library(mosaic)
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
 ```
 
 #Worst movies ordered by rating
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 bestmovies<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS gross, n.name AS director, n2.name AS writer 
@@ -54,7 +54,7 @@ LIMIT 100;")
 
 parsing gross for 50 shades
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 fiftyshadesgross<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS gross
@@ -99,7 +99,7 @@ ggplot(data=parsed, aes(x=the_date, y=gross))+
 
 # worst sequels
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 sequels<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, n.name AS director, mi3.info AS Budget 
@@ -132,37 +132,8 @@ ORDER BY mi2.info;")
 View(sequels)
 ```
 
-Batman Begins and The Dark Knight
 
-The Godfather and the Godfather II
-
-The Lion King and Lion King 2: Simba's Pride
-
-Lord of the Rings The Fellowship of the Ring and The Two Towers
-
-Star Wars A New Hope and Star Wars The Empire Strikes Back
-
-The Matrix and The Matrix Reloaded
-
-Alien and Aliens
-
-Blade Runner and Blade Runner 2049
-
-Indiana Jones Raiders of the Lost Arc and Temple of Doom
-
-Trainspotting and T2
-
-Star Trek and Star Trek II: The Wrath of Khan
-
-Jurassic Park 1 and 2
-
-Toy Story and Toy Story 2
-
-Men in Black I and II
-
-The Hangover Part 1 and 2
-
-```{r}
+```{r, message=FALSE, warning=FALSE}
 Remakes<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, mi4.info AS Languages, 'remake' AS type
@@ -183,7 +154,7 @@ group by t.id;")
 View(Remakes)
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 orginals<-db %>%
 dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type, mi4.info AS Languages 
@@ -207,8 +178,7 @@ fav_stats(orginals$votes)
 ```
 
 
-
-```{r}
+```{r, message=FALSE, warning=FALSE}
 Remakes_and_orginals<-db %>%
   dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, mi4.info AS Languages
@@ -232,8 +202,7 @@ View(Remakes_and_orginals)
 ```
 
 
-
-```{r}
+```{r, message=FALSE, warning=FALSE}
 list<-orginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
@@ -249,4 +218,4 @@ final%>%
 ```
 
 
-
+commit
