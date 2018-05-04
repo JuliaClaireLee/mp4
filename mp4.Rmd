@@ -183,7 +183,7 @@ WHERE t.kind_id = 1
 AND mi1.info > 25000
 AND L.link_type_id = 3
 AND mi4.info = 'English'
-group by t.id 
+group by t.id
 Limit 800;") 
 View(Remakes_and_orginals)
 ```
