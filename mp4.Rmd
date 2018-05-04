@@ -157,7 +157,7 @@ View(Remakes)
 ```{r, message=FALSE, warning=FALSE}
 orginals<-db %>%
 dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type, mi4.info AS Languages 
+  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type, mi4.info AS Languages
 FROM title t
 JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
 JOIN movie_link AS L on L.linked_movie_id = t.id
@@ -172,6 +172,7 @@ AND mi4.info = 'English'
 AND mi1.info >25000
 group by t.id;") 
 View(orginals)
+
 
 fav_stats(orginals$votes)
 
@@ -208,14 +209,15 @@ list<-orginals%>%
   summarise(number=n())%>%
   filter(number==2)
 
-final<-list%>%
+test<-list%>%
   inner_join(orginals, by="title")
 
-final%>%
+finallist<-test%>%
   group_by(title)%>%
   summarise(distinctyr=n_distinct(production_year))%>%
   filter(distinctyr==2)
+
+mp4<-finallist%>%
+  inner_join(orginals, by="title")%>%
+  select(-type)
 ```
-
-
-commit
