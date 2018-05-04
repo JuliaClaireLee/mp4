@@ -185,7 +185,24 @@ Limit 800;")
 View(Remakes)
 ```
 
+```{r}
+orginals<-db %>%
+dbGetQuery("SELECT t.id, t.title, t.production_year, 
+  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type 
+FROM title t
+JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
+JOIN movie_link AS L on L.linked_movie_id = t.id
+JOIN movie_info AS mi3 ON mi3.movie_id = t.id
+JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
+WHERE t.kind_id = 1
+  AND mi1.info_type_id = 100
+  AND mi2.info_type_id = 101
+  AND mi3.info_type_id = 105
+order by t.id
+Limit 100;") 
+View(orginals)
 
+```
 
 
 
@@ -213,24 +230,7 @@ Limit 800;")
 View(Remakes_and_orginals)
 ```
 
-```{r}
-orginals<-db %>%
-dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type 
-FROM title t
-JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
-JOIN movie_link AS L on L.linked_movie_id = t.id
-JOIN movie_info AS mi3 ON mi3.movie_id = t.id
-JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
-WHERE t.kind_id = 1
-  AND mi1.info_type_id = 100
-  AND mi2.info_type_id = 101
-  AND mi3.info_type_id = 105
-order by t.id
-Limit 100;") 
-View(orginals)
 
-```
 
 
 
