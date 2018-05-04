@@ -217,11 +217,8 @@ finallist<-test%>%
   summarise(distinctyr=n_distinct(production_year))%>%
   filter(distinctyr==2)
 
-<<<<<<< HEAD
 mp4<-finallist%>%
   inner_join(orginals, by="title")%>%
   select(-type)
 ```
-=======
 
->>>>>>> b4d74aae5c4c67d59598cc2a0f66716f4573a333
