@@ -114,7 +114,7 @@ WHERE t.kind_id = 1
   AND mi2.info_type_id = 101
   AND mi3.info_type_id = 105
   AND ci.role_id = 8
-AND t.title = 'Men in Black II'
+AND (t.title = 'Men in Black II'
 OR t.title = 'The Hangover Part II'
 OR t.title = 'Star Wars: Episode V - The Empire Strikes Back'
 OR t.title = 'Jurassic Park II'
@@ -126,7 +126,7 @@ OR t.title =  'Toy Story 2'
 OR t.title =  'T2'
 OR t.title = 'Blade Runner 2049'
 OR t.id = 695024
-OR t.title = 'The Lord of the Rings: The Two Towers'
+OR t.title = 'The Lord of the Rings: The Two Towers')
 group by t.title
 ORDER BY mi2.info;")
 View(sequels)
@@ -171,7 +171,7 @@ Remakes_and_orginals<-db %>%
  FROM title t
 JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
 JOIN movie_link AS L on L.movie_id = t.id
-Join movie_lik as L2 on L2.linked_movie_id = t.id
+Join movie_link as L2 on L2.linked_movie_id = t.id
 JOIN movie_info AS mi3 ON mi3.movie_id = t.id
 JOIN movie_info AS mi4 ON mi4.movie_id = t.id
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
