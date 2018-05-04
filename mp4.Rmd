@@ -201,7 +201,7 @@ WHERE t.kind_id = 1
   AND mi3.info_type_id = 105
 AND mi4.info = 'English'
 group by t.id
-Limit 100;") 
+Limit 276;") 
 View(orginals)
 
 ```
@@ -228,7 +228,7 @@ AND mi1.info > 25000
 AND L.link_type_id = 3
 AND mi4.info = 'English'
 group by t.id
-Limit 800;") 
+Limit 276;") 
 View(Remakes_and_orginals)
 ```
 
