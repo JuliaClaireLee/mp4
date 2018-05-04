@@ -233,7 +233,13 @@ View(Remakes_and_orginals)
 ```
 
 
+```{r}
+Remakes_and_orginals%>%
+  group_by(title)%>%
+  summarise(number=n())%>%
+  filter(number==2)
 
+```
 
 
 
