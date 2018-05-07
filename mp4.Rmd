@@ -110,5 +110,3 @@ plot2<-ggplot(data = plottingdata, aes(x=diff_rating, y = diff_votes)) +
 
 
 
-
-
