@@ -118,3 +118,28 @@ mp4<-finallist%>%
   select(-type)
 ```
 
+# spread
+
+```{r}
+gather(mp4, key=title, value=production_year)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
