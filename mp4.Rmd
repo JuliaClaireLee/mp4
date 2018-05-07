@@ -29,20 +29,20 @@ dbListTables(db)
 remakesoriginals<-db %>%
 dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type, mi4.info AS Languages
-FROM title t
-JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
-JOIN movie_link AS L on L.linked_movie_id = t.id
-JOIN movie_info AS mi3 ON mi3.movie_id = t.id
-JOIN movie_info AS mi4 ON mi4.movie_id = t.id
-JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
-WHERE t.kind_id = 1
+FROM title t 
+JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id  #used  movie_id to join movie_info_idx to title
+JOIN movie_link AS L on L.linked_movie_id = t.id  #used  linked_movie_id to join movie_link to title  
+JOIN movie_info AS mi3 ON mi3.movie_id = t.id    #used  movie_id to join movie_info to title
+JOIN movie_info AS mi4 ON mi4.movie_id = t.id    #used  movie_id to join movie_info to title
+JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id #used movie_id to join movie_info_idx to title
 # used index here
-  AND mi1.info_type_id = 100
-  AND mi2.info_type_id = 101
-  AND mi3.info_type_id = 105
-AND mi4.info = 'English'
-AND mi1.info >25000
-group by t.id;") 
+WHERE t.kind_id = 1 #limit only to movies 
+  AND mi1.info_type_id = 100 #only info aboutnumber_of_votes 
+  AND mi2.info_type_id = 101  # only info about rating 
+  AND mi3.info_type_id = 105  # only info about Budget
+AND mi4.info = 'English' #used index limit movie to only english_language films 
+AND mi1.info >25000  #only films that got more than 25000 votes
+group by t.id #group by t.id(because this gives us the disnict film but it could have same title);") 
 View(remakesoriginals)
 
 
@@ -104,6 +104,7 @@ plot1
 plot2<-ggplot(data = plottingdata, aes(x=diff_rating, y = diff_votes)) + 
   geom_point() +
   geom_jitter() +
+  geom_text()
 ```
 
 
