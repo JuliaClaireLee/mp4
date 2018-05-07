@@ -118,7 +118,7 @@ plottingdata[["sign"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "positive", "n
 
 ggplot(data=plottingdata, aes(x=title, y=diff_rating, fill=sign))+ 
   geom_col() + scale_fill_manual(values = c("positive"="lightskyblue2", negative="lightgoldenrod1"))+
-  theme(text = element_text(size=7),
+  theme(text = element_text(size=6),
         axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
