@@ -75,6 +75,8 @@ isolating remakes
 
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 
+originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
+
 ```
 
 
