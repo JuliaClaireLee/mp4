@@ -68,8 +68,8 @@ finallist<-test%>%
 mp4<-finallist%>%
   inner_join(remakesoriginals, by="title")%>%
   select(-type)
-mp4$votes <-as.integer(mp4$votes)
-mp4$rating <-as.integer(mp4$rating)
+mp4$votes <-as.numeric(mp4$votes)
+mp4$rating <-as.numeric(mp4$rating)
 ```
 
 
