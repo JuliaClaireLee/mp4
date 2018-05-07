@@ -25,33 +25,8 @@ dbListTables(db)
 ```
 
 
-
-
-
-
 ```{r, message=FALSE, warning=FALSE}
-Remakes<-db %>%
-  dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, mi4.info AS Languages, 'remake' AS type
- FROM title t
-JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
-JOIN movie_link AS L on L.movie_id = t.id
-JOIN movie_info AS mi3 ON mi3.movie_id = t.id
-JOIN movie_info AS mi4 ON mi4.movie_id = t.id
-JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
-WHERE t.kind_id = 1
-  AND mi1.info_type_id = 100
-  AND mi2.info_type_id = 101
-  AND mi4.info_type_id = 4
-  AND mi3.info_type_id = 105
-AND L.link_type_id = 3
-AND mi4.info = 'English'
-group by t.id;")
-View(Remakes)
-```
-
-```{r, message=FALSE, warning=FALSE}
-orginals<-db %>%
+remakesoriginals<-db %>%
 dbGetQuery("SELECT t.id, t.title, t.production_year, 
   mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, 'original' AS type, mi4.info AS Languages
 FROM title t
@@ -76,30 +51,6 @@ fav_stats(orginals$votes)
 
 
 ```{r, message=FALSE, warning=FALSE}
-Remakes_and_orginals<-db %>%
-  dbGetQuery("SELECT t.id, t.title, t.production_year, 
-  mi1.info AS votes, mi2.info AS rating, mi3.info AS Budget, mi4.info AS Languages
- FROM title t
-JOIN movie_info_idx AS mi1 ON mi1.movie_id = t.id
-JOIN movie_link AS L on L.movie_id = t.id
-Join movie_link as L2 on L2.linked_movie_id = t.id
-JOIN movie_info AS mi3 ON mi3.movie_id = t.id
-JOIN movie_info AS mi4 ON mi4.movie_id = t.id
-JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
-WHERE t.kind_id = 1
-  AND mi1.info_type_id = 100
-  AND mi2.info_type_id = 101
-  AND mi4.info_type_id = 4
-  AND mi3.info_type_id = 105
-AND L.link_type_id = 3
-AND mi4.info = 'English'
-group by t.id
-Limit 500;") 
-View(Remakes_and_orginals)
-```
-
-
-```{r, message=FALSE, warning=FALSE}
 list<-orginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
@@ -118,13 +69,11 @@ mp4<-finallist%>%
   select(-type)
 ```
 
-# spread
+isolating remakes
 
 ```{r}
-gather(mp4, key=title, value=production_year)
+remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 ```
-
-
 
 
 
