@@ -121,7 +121,7 @@ mp4<-finallist%>%
 # spread
 
 ```{r}
-gather(mp4, key=title, value=production_year)
+gather(mp4, key=title, -production_year)
 ```
 
 
