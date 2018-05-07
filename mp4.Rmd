@@ -52,19 +52,23 @@ fav_stats(remakesoriginals$votes)
 
 
 ```{r, message=FALSE, warning=FALSE}
+#Eliminating and movies that show up more than twice (indicating it is not an original-remake pair)
 list<-remakesoriginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
   filter(number==2)
 
+#Joining with the remakesoriginals table to get the title
 test<-list%>%
   inner_join(remakesoriginals, by="title")
 
+#eliminating movies showing up in the same year (not a remake, just share the same name)
 finallist<-test%>%
   group_by(title)%>%
   summarise(distinctyr=n_distinct(production_year))%>%
   filter(distinctyr==2)
 
+#Rejoining titles, changing rating and vote variables to numeric
 mp4<-finallist%>%
   inner_join(remakesoriginals, by="title")%>%
   select(-type)
@@ -79,12 +83,13 @@ remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 # deleting the remakes
 originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 
-# join the two df and create a new column represents the difference in vote and rating
+# join the two df and create a new column representing the difference in vote and rating
 full<-remakesmp4%>%
   left_join(originalsmp4, by="title") %>%
   mutate (diff_rating = rating.x - rating.y) %>%
   mutate (diff_votes = votes.x - votes.y)
 
+#removing two leftover cases after aggregating (The Avengers, Unknown)
 plottingdata<-full[-c(65,44 ),]
 ```
 
