@@ -84,14 +84,17 @@ full<-remakesmp4%>%
   left_join(originalsmp4, by="title") %>%
   mutate (diff = rating.x - rating.y) %>%
   mutate (diff_votes = votes.x - votes.y)
+
+full<-full[-c(65,44 ),]
 ```
 
 
 ```{r, message=FALSE, warning=FALSE}
 # visualization
-ggplot(data = full, aes(x=title, y=rating.y))+
+plot1<- ggplot(data = full, aes(x=title, y=rating.y))+
   geom_point(color="red")+
-  geom_point(aes(y=rating.x), color="blue")
+  geom_point(aes(y=rating.x), color="blue")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 
