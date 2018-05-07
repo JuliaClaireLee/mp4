@@ -36,7 +36,7 @@ JOIN movie_link AS L on L.linked_movie_id = t.id  #used  linked_movie_id to join
 JOIN movie_info AS mi3 ON mi3.movie_id = t.id    #used  movie_id to join movie_info to title
 JOIN movie_info AS mi4 ON mi4.movie_id = t.id    #used  movie_id to join movie_info to title
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id #used movie_id to join movie_info_idx to title
-# used index here
+#used index here for speed
 WHERE t.kind_id = 1 #limit only to movies 
   AND mi1.info_type_id = 100 #only info aboutnumber_of_votes 
   AND mi2.info_type_id = 101  # only info about rating 
