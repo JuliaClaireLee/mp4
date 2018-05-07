@@ -72,7 +72,9 @@ mp4<-finallist%>%
 isolating remakes
 
 ```{r}
+
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
+
 ```
 
 
