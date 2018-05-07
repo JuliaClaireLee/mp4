@@ -77,14 +77,16 @@ remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 
 originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 
-remakesmp4%>%
-  left_join(originalsmp4, by="title")
+full<-remakesmp4%>%
+  left_join(originalsmp4, by="title") %>%
+  
+  
 ```
 
 
-
-
-
+```{r}
+ggplot(data = full, aes(x=))
+```
 
 
 
