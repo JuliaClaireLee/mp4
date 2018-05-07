@@ -78,14 +78,16 @@ remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 
 full<-remakesmp4%>%
-  left_join(originalsmp4, by="title") %>%
+  left_join(originalsmp4, by="title")
   
   
 ```
 
 
 ```{r}
-ggplot(data = full, aes(x=))
+ggplot(data = full, aes(x=title, y=rating.y))+
+  geom_point(color="red")+
+  geom_point(aes(y=rating.x), color="blue")
 ```
 
 
