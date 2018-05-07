@@ -2,10 +2,11 @@
 title: "mp4"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
-output: 
+output:
+  pdf_document: default
   html_document:
-    theme: cosmo 
     code_folding: hide
+    theme: cosmo
 ---
 
 ```{r setup, include=FALSE}
@@ -89,19 +90,8 @@ full<-remakesmp4%>%
   mutate (diff_rating = rating.x - rating.y) %>%
   mutate (diff_votes = votes.x - votes.y)
 
-#removing two leftover cases after aggregating (The Avengers, Unknown)
-plottingdata<-full[-c(65,44 ),]
-```
-
-
-```{r, message=FALSE, warning=FALSE}
-# visualization
-plot1<- ggplot(data = plottingdata, aes(x=title, y=rating.y))+
-  geom_point(color="red")+
-  geom_point(aes(y=rating.x), color="blue")+
-  theme(text = element_text(size=7),
-        axis.text.x = element_text(angle = 90, hjust = 1))
-plot1
+#removing two leftover cases after aggregating (Crash, Legend, Passengers, The Avengers, The Gift, and Unknown)
+plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 ```
 
 
@@ -115,26 +105,47 @@ plot2
 
 
 ```{r}
-plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Original", "Remake")
+plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
 
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
   theme(text = element_text(size = 10),
-        axis.text.x = element_text(angle = 90, hjust = 1, size = 6))+ 
+        axis.text.x = element_text(angle = 90, hjust = 1, size = 6), 
+        panel.grid.major = element_line(color = "gray94", size = .3),
+  panel.grid.minor = element_line(color = "gray94", size = .3),
+  panel.background = element_rect(fill = "white",
+                                color = "white"))+ 
+  scale_y_continuous(breaks = c(-4, -3, -2, -1, 0, 1), labels = c("-4", "-3", "-2", "-1", "0", "1"))+ 
   guides(fill = guide_legend(title = "Better Rated"))+
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
+Annotation Layers
+```{r}
+annotate("segment", xmin = NULL, xmax = NULL,
+  ymin = NULL, ymax = NULL, label = )
 
+annotate("text", xmin = NULL, xmax = NULL,
+  ymin = NULL, ymax = NULL)
+```
 
+#Better Originals:
 
+The Wicker Man review
+https://www.nytimes.com/2006/09/02/movies/02wick.html
 
+Psycho review
+https://www.nytimes.com/1998/12/05/movies/film-review-psycho-the-mama-s-boy-his-motel-guest-and-that-shower.html
 
+The Fog review
+https://www.empireonline.com/movies/fog-2005/review/
 
+Talk about how misogynist backlash affected Ghostbusters remake
 
+#Better Remakes:
 
-
-
+Godzilla
+https://film.avclub.com/after-a-long-dry-spell-hollywood-does-godzilla-right-1798180454
 
 
 
