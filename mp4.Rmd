@@ -36,6 +36,7 @@ JOIN movie_info AS mi3 ON mi3.movie_id = t.id
 JOIN movie_info AS mi4 ON mi4.movie_id = t.id
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id
 WHERE t.kind_id = 1
+# used index here
   AND mi1.info_type_id = 100
   AND mi2.info_type_id = 101
   AND mi3.info_type_id = 105
@@ -72,7 +73,7 @@ mp4$rating <-as.integer(mp4$rating)
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # deleting the original movie
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 # deleting the remakes
@@ -88,7 +89,7 @@ plottingdata<-full[-c(65,44 ),]
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # visualization
 plot1<- ggplot(data = plottingdata, aes(x=title, y=rating.y))+
   geom_point(color="red")+
@@ -98,9 +99,11 @@ plot1
 ```
 
 
-
-
-
+```{r}
+ggplot(data = full, aes(x=diff, y = diff_votes)) + 
+  geom_point() +
+  geom_jitter()
+```
 
 
 
