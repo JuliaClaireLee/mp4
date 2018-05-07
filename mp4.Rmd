@@ -67,6 +67,8 @@ finallist<-test%>%
 mp4<-finallist%>%
   inner_join(remakesoriginals, by="title")%>%
   select(-type)
+mp4$votes <-as.integer(mp4$votes)
+mp4$rating <-as.integer(mp4$rating)
 ```
 
 isolating remakes
@@ -78,9 +80,13 @@ remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 
 full<-remakesmp4%>%
-  left_join(originalsmp4, by="title")
-  
-  
+  left_join(originalsmp4, by="title") %>%
+  mutate (diff = rating.x - rating.y) %>%
+  mutate (diff_votes = votes.x - votes.y)
+
+
+
+
 ```
 
 
