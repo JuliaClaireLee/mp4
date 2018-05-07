@@ -42,22 +42,22 @@ WHERE t.kind_id = 1
 AND mi4.info = 'English'
 AND mi1.info >25000
 group by t.id;") 
-View(orginals)
+View(remakesoriginals)
 
 
-fav_stats(orginals$votes)
+fav_stats(remakesoriginals$votes)
 
 ```
 
 
 ```{r, message=FALSE, warning=FALSE}
-list<-orginals%>%
+list<-remakesoriginals%>%
   group_by(title)%>%
   summarise(number=n())%>%
   filter(number==2)
 
 test<-list%>%
-  inner_join(orginals, by="title")
+  inner_join(remakesoriginals, by="title")
 
 finallist<-test%>%
   group_by(title)%>%
@@ -65,7 +65,7 @@ finallist<-test%>%
   filter(distinctyr==2)
 
 mp4<-finallist%>%
-  inner_join(orginals, by="title")%>%
+  inner_join(remakesoriginals, by="title")%>%
   select(-type)
 ```
 
@@ -77,6 +77,8 @@ remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 
 originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 
+remakesmp4%>%
+  left_join(originalsmp4, by="title")
 ```
 
 
