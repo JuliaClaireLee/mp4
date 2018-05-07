@@ -100,7 +100,7 @@ plot1
 
 
 ```{r}
-ggplot(data = full, aes(x=diff_rating, y = diff_votes)) + 
+ggplot(data = plottingdata, aes(x=diff_rating, y = diff_votes)) + 
   geom_point() +
   geom_jitter()
 ```
