@@ -35,6 +35,7 @@ JOIN movie_link AS L on L.linked_movie_id = t.id  #used  linked_movie_id to join
 JOIN movie_info AS mi3 ON mi3.movie_id = t.id    #used  movie_id to join movie_info to title
 JOIN movie_info AS mi4 ON mi4.movie_id = t.id    #used  movie_id to join movie_info to title
 JOIN movie_info_idx AS mi2 ON mi2.movie_id = t.id #used movie_id to join movie_info_idx to title
+
 #used index here for speed
 WHERE t.kind_id = 1 #limit only to movies 
   AND mi1.info_type_id = 100 #only info aboutnumber_of_votes 
@@ -46,9 +47,7 @@ group by t.id #group by t.id(because this gives us the disnict film but it could
 
 View(remakesoriginals)
 
-
 fav_stats(remakesoriginals$votes)
-
 ```
 
 
@@ -119,8 +118,8 @@ plot2
 plottingdata[["sign"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "positive", "negative")
 
 ggplot(data=plottingdata, aes(x=title, y=diff_rating, fill=sign))+ 
-  geom_col() + scale_fill_manual(values = c("positive"="lightsteelblue1", negative="mistyrose"))+
-  theme(text = element_text(size=7),
+  geom_col() + scale_fill_manual(values = c("positive"="lightskyblue2", negative="lightgoldenrod1"))+
+  theme(text = element_text(size=6),
         axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
