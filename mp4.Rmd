@@ -73,7 +73,7 @@ mp4$rating <-as.integer(mp4$rating)
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # deleting the original movie
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
 # deleting the remakes
@@ -87,7 +87,7 @@ full<-remakesmp4%>%
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # visualization
 ggplot(data = full, aes(x=title, y=rating.y))+
   geom_point(color="red")+
