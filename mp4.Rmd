@@ -98,9 +98,11 @@ plot1<- ggplot(data = full, aes(x=title, y=rating.y))+
 ```
 
 
-
-
-
+```{r}
+ggplot(data = full, aes(x=diff, y = diff_votes)) + 
+  geom_point() +
+  geom_jitter()
+```
 
 
 
