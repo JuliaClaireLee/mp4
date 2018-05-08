@@ -88,8 +88,8 @@ originalsmp4<-mp4[c(rep(TRUE,1), FALSE),]
 full<-remakesmp4%>%
   left_join(originalsmp4, by="title") %>%
   mutate (diff_rating = rating.x - rating.y) %>%
-  mutate (diff_votes = votes.x - votes.y)
-
+  mutate (diff_votes = votes.x - votes.y) %>%
+  mutate (which = ifelse(diff_rating > 0,"remake", "original" ))
 #removing two leftover cases after aggregating (Crash, Legend, Passengers, The Avengers, The Gift, and Unknown)
 plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 ```
@@ -106,11 +106,9 @@ parseddata <- plottingdata %>%
 ```
 
 ```{r}
-plot2<-ggplot(data = plottingdata, aes(x=diff_rating, y = diff_votes)) + 
-  geom_point() +
-  geom_jitter() +
-  geom_text(aes(label=title))
-plot2
+plot2<-ggplot(data = plottingdata, aes(x= production_year.x, y = diff_rating, color= which)) + 
+  geom_text(aes(label = title, size = votes.x)) 
+ plot2
 ```
 
 
