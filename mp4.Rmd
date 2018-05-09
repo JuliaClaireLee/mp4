@@ -1,5 +1,5 @@
 ---
-title: "Don't Mess with the Orginal"
+title: "Don't Mess with the Original"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
