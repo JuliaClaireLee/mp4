@@ -111,7 +111,7 @@ We gathered information about remakes of some previous movies, and joined the mo
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
 ```
 
-```{r,warning=FALSE, message=FALSE}
+```{r,warning=FALSE, message=FALSE, fig.align="center"}
 
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
