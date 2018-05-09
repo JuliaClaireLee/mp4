@@ -3,7 +3,6 @@ title: "mp4"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
-  pdf_document: default
   html_document:
     code_folding: hide
     theme: cosmo
