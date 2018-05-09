@@ -105,13 +105,6 @@ parseddata <- plottingdata %>%
 
 
 ```{r}
-plot2<-ggplot(data = plottingdata, aes(x= production_year.x, y = diff_rating, color= which)) + 
-  geom_text(aes(label = title, size = votes.x)) 
- plot2
-```
-
-
-```{r}
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
@@ -155,6 +148,7 @@ For our github repository, see:
 
 
 
+Stuff we probably don't need
 #Better Originals:
 
 The Wicker Man review
@@ -174,7 +168,11 @@ Godzilla
 https://film.avclub.com/after-a-long-dry-spell-hollywood-does-godzilla-right-1798180454
 
 
-
+```{r}
+plot2<-ggplot(data = plottingdata, aes(x= production_year.x, y = diff_rating, color= which)) + 
+  geom_text(aes(label = title, size = votes.x)) 
+ plot2
+```
 
 
 
