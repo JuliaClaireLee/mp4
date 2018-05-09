@@ -166,7 +166,7 @@ The data says it all: don’t mess with the original! If film companies want to 
 
 ^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
 
-```{r}
+```{r, echo=FALSE}
 wordcountaddin::text_stats("mp4.Rmd")
 ```
 
