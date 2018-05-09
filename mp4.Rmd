@@ -1,5 +1,5 @@
 ---
-title: "mp4"
+title: "Remakes are Fakes: Are Remakes Bad?"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
@@ -91,24 +91,16 @@ full<-remakesmp4%>%
 plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 ```
 
-```{r}
+```{r,warning=FALSE, message=FALSE}
 #creating a remake and original column for plotting
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
-<<<<<<< HEAD
-```
-
-=======
-
-#parsing budget
-plottingdata[58, 14] = "$116,975.25"
-
-parseddata <- plottingdata %>%
-  mutate(parsedremake = str_extract(Budget.x, "\\$[0-9]+,[0-9]{3},[0-9]{3}|\\$[0-9]{2,3}+,[0-9]{3}"), parsedoriginal = str_extract(Budget.y, "\\$[0-9]+,[0-9]{3},[0-9]{3}|\\$[0-9]{2,3}+,[0-9]{3}"))
 ```
 
 
->>>>>>> dfc6c8e6ca81d25be288abcc7e70d552ac6f9bcc
-```{r}
+
+
+
+```{r,warning=FALSE, message=FALSE}
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
@@ -123,24 +115,21 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
-<<<<<<< HEAD
-how to annotate
-=======
 
->>>>>>> dfc6c8e6ca81d25be288abcc7e70d552ac6f9bcc
-```{r}
+```{r, message=FALSE, warning=FALSE}
 annotate("segment", xmin = NULL, xmax = NULL,
   ymin = NULL, ymax = NULL, label = )
 
 annotate("text", xmin = NULL, xmax = NULL,
   ymin = NULL, ymax = NULL)
 ```
+^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
 
 
-For our github repository, see:
+
 <https://github.com/JuliaClaireLee/mp4.git>.
 
-
+![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
 
 
