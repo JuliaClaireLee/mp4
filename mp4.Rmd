@@ -116,9 +116,6 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
-^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
-
-
 
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
@@ -128,7 +125,7 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
 
 
 
-
+^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
 
 
 
