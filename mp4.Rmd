@@ -5,7 +5,6 @@ date: "4/23/2018"
 output:
   html_document:
     code_folding: hide
-    theme: cosmo
 ---
 
 ```{r setup, include=FALSE}
@@ -97,10 +96,8 @@ plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake
 ```
 
 
-
-
-
 ```{r,warning=FALSE, message=FALSE}
+
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
@@ -114,13 +111,17 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
   guides(fill = guide_legend(title = "Better Rated"))+
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
+
+
+
 ^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
 
 
-
-
-
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
+
+
+
+
 
 
 
