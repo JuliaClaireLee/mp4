@@ -32,7 +32,7 @@ A remake is defined as an older, already existing plot told with different actor
 Contrary to the companies’ ideal expectation for most of the time, it seems like when the first film is decent or even excellent, the second film just isn’t able to match up. Sometimes the studio tries to rush the sequel out, and that results in a rushed creative process; or the story ideas are just depleted, and the remake is just for the sake of making more profit. In general, it’s as simple as the remakes only focus on doing “bigger” instead of being “better”. Occasionally, the original film isn’t all that great, and the newer version blows it out of the water, exceeding far beyond everyone’s expectations. 
 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, results='hide'}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
 ```
