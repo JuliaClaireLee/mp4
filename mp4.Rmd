@@ -3,7 +3,9 @@ title: "Don't Mess with the Original"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
-  html_document:
+   html_document:
+    theme: united
+    highlight: tango
     code_folding: hide
     
 ---
