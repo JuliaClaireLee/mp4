@@ -4,7 +4,9 @@ author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
   html_document:
+     theme: cosmo 
     code_folding: hide
+    
 ---
 
 ```{r setup, include=FALSE}
