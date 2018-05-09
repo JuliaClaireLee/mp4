@@ -108,8 +108,6 @@ We gathered information about remakes of some previous movies, and joined the mo
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
 ```
 
-
-
 ```{r,warning=FALSE, message=FALSE}
 
 #plot 1
@@ -128,10 +126,6 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
 
 
 Our visualization shows our assumption was correct: remakes generally do rate worse than their originals. Some particularly bad remakes were the 2016 Ghostbusters, the 1998 Psycho, and the 2006 The Wicker Man. Conversely, the Godzilla and Last House on the Left out-rated their originals.
-
-
-
-
 
 
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
