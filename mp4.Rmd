@@ -123,7 +123,7 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
 
-![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
+![](https://lh3.googleusercontent.com/-hDxtnlEI4Pk/V5hV8wH5EXI/AAAAAAAAC7M/2rmgcZ00-U8/s640/blogger-image-2098143733.jpg)
 
 
 
