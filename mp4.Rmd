@@ -46,7 +46,6 @@ AND mi4.info = 'English' #used index limit movie to only english_language films
 AND mi1.info >25000  #only films that got more than 25000 votes
 group by t.id #group by t.id(because this gives us the disnict film but it could have same title);") 
 
-
 fav_stats(remakesoriginals$votes)
 ```
 
@@ -112,7 +111,6 @@ plot2<-ggplot(data = plottingdata, aes(x= production_year.x, y = diff_rating, co
 ```
 
 
-
 ```{r}
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
@@ -127,7 +125,6 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
   guides(fill = guide_legend(title = "Better Rated"))+
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
-
 
 
 ```{r}
