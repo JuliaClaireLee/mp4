@@ -3,7 +3,6 @@ title: "mp4"
 author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
-  pdf_document: default
   html_document:
     code_folding: hide
     theme: cosmo
@@ -45,7 +44,6 @@ WHERE t.kind_id = 1 #limit only to movies
 AND mi4.info = 'English' #used index limit movie to only english_language films 
 AND mi1.info >25000  #only films that got more than 25000 votes
 group by t.id #group by t.id(because this gives us the disnict film but it could have same title);") 
-
 
 fav_stats(remakesoriginals$votes)
 ```
@@ -96,8 +94,20 @@ plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 ```{r}
 #creating a remake and original column for plotting
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
+<<<<<<< HEAD
 ```
 
+=======
+
+#parsing budget
+plottingdata[58, 14] = "$116,975.25"
+
+parseddata <- plottingdata %>%
+  mutate(parsedremake = str_extract(Budget.x, "\\$[0-9]+,[0-9]{3},[0-9]{3}|\\$[0-9]{2,3}+,[0-9]{3}"), parsedoriginal = str_extract(Budget.y, "\\$[0-9]+,[0-9]{3},[0-9]{3}|\\$[0-9]{2,3}+,[0-9]{3}"))
+```
+
+
+>>>>>>> dfc6c8e6ca81d25be288abcc7e70d552ac6f9bcc
 ```{r}
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
@@ -113,7 +123,11 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
+<<<<<<< HEAD
 how to annotate
+=======
+
+>>>>>>> dfc6c8e6ca81d25be288abcc7e70d552ac6f9bcc
 ```{r}
 annotate("segment", xmin = NULL, xmax = NULL,
   ymin = NULL, ymax = NULL, label = )
@@ -130,6 +144,7 @@ For our github repository, see:
 
 
 
+Stuff we probably don't need
 #Better Originals:
 
 The Wicker Man review
@@ -149,7 +164,11 @@ Godzilla
 https://film.avclub.com/after-a-long-dry-spell-hollywood-does-godzilla-right-1798180454
 
 
-
+```{r}
+plot2<-ggplot(data = plottingdata, aes(x= production_year.x, y = diff_rating, color= which)) + 
+  geom_text(aes(label = title, size = votes.x)) 
+ plot2
+```
 
 
 
