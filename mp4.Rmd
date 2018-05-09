@@ -19,12 +19,10 @@ library(mosaic)
 library(RSQLite)
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 remakesoriginals<-db %>%
@@ -48,7 +46,6 @@ group by t.id #group by t.id(because this gives us the disnict film but it could
 
 fav_stats(remakesoriginals$votes)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 #Eliminating and movies that show up more than twice (indicating it is not an original-remake pair)
@@ -75,7 +72,6 @@ mp4$votes <-as.numeric(mp4$votes)
 mp4$rating <-as.numeric(mp4$rating)
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 # deleting the original movie
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
@@ -97,9 +93,7 @@ plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
 ```
 
-
 ```{r,warning=FALSE, message=FALSE}
-
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
