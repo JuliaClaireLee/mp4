@@ -17,16 +17,17 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(mosaic)
+library(extrafont)
 library(RSQLite)
 ```
 
 ![](https://www.denverlibrary.org/sites/dplorg/files/2016/07/hollywood-remakes.jpeg)
 
+
 ```{r, message=FALSE, warning=FALSE}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 remakesoriginals<-db %>%
@@ -50,7 +51,6 @@ group by t.id #group by t.id(because this gives us the disnict film but it could
 
 fav_stats(remakesoriginals$votes)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 #Eliminating and movies that show up more than twice (indicating it is not an original-remake pair)
@@ -77,7 +77,6 @@ mp4$votes <-as.numeric(mp4$votes)
 mp4$rating <-as.numeric(mp4$rating)
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 # deleting the original movie
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
@@ -100,12 +99,13 @@ plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake
 ```
 
 
+
 ```{r,warning=FALSE, message=FALSE}
 
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
-  geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="gold1"))+
-  theme(text = element_text(size = 10),
+  geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="violet"))+
+  theme(text = element_text(size = 10, family="Tahoma"),
         axis.text.x = element_text(angle = 90, hjust = 1, size = 6), 
         panel.grid.major = element_line(color = "gray94", size = .3),
   panel.grid.minor = element_line(color = "gray94", size = .3),
@@ -116,14 +116,16 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
-
-
 ^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
+
 
 
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
-![GHOSTBUSTERS (1984) vs GHOSTBUSTERS (2016)](https://lh3.googleusercontent.com/-hDxtnlEI4Pk/V5hV8wH5EXI/AAAAAAAAC7M/2rmgcZ00-U8/s640/blogger-image-2098143733.jpg)
+
+![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
+
+
 
 
 
