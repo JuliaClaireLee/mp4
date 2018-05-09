@@ -5,6 +5,7 @@ date: "4/23/2018"
 output:
   html_document:
     code_folding: hide
+    
 ---
 
 ```{r setup, include=FALSE}
@@ -15,15 +16,17 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(mosaic)
+<<<<<<< HEAD
 library(extrafont)
+=======
+library(RSQLite)
+>>>>>>> c51b0dfab382903dbc574fcc0f5dca0509a703aa
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 db<-dbConnect_scidb(dbname = "imdb")
 dbListTables(db)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 remakesoriginals<-db %>%
@@ -47,7 +50,6 @@ group by t.id #group by t.id(because this gives us the disnict film but it could
 
 fav_stats(remakesoriginals$votes)
 ```
-
 
 ```{r, message=FALSE, warning=FALSE}
 #Eliminating and movies that show up more than twice (indicating it is not an original-remake pair)
@@ -74,7 +76,6 @@ mp4$votes <-as.numeric(mp4$votes)
 mp4$rating <-as.numeric(mp4$rating)
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 # deleting the original movie
 remakesmp4 <- mp4[c(rep(FALSE,1),TRUE), ]
@@ -96,9 +97,13 @@ plottingdata<-full[-c(11, 25, 30, 44, 47, 65),]
 plottingdata[["betterrated"]]=ifelse(plottingdata[["diff_rating"]] >= 0, "Remake", "Original")
 ```
 
+<<<<<<< HEAD
 
 ```{r,warning=FALSE, message=FALSE}
 
+=======
+```{r,warning=FALSE, message=FALSE}
+>>>>>>> c51b0dfab382903dbc574fcc0f5dca0509a703aa
 #plot 1
 ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))+ 
   geom_col() + scale_fill_manual(values = c("Remake"="lightskyblue2", "Original"="violet"))+
@@ -113,15 +118,25 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
     labs(x = "Movie Title", y = "Difference in Ratings", caption = "(Difference = Remake - Original)")
 ```
 
+<<<<<<< HEAD
 ^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
 
 
 
 <https://github.com/JuliaClaireLee/mp4.git>.
+=======
+
+
+^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
+
+
+![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
+>>>>>>> c51b0dfab382903dbc574fcc0f5dca0509a703aa
 
 
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
+<<<<<<< HEAD
 #Better Originals:
 
 The Wicker Man review
@@ -140,6 +155,8 @@ Talk about how misogynist backlash affected Ghostbusters remake
 Godzilla
 https://film.avclub.com/after-a-long-dry-spell-hollywood-does-godzilla-right-1798180454
 
+=======
+>>>>>>> c51b0dfab382903dbc574fcc0f5dca0509a703aa
 
 
 
