@@ -20,10 +20,11 @@ library(extrafont)
 library(RSQLite)
 ```
 
+<center>
+
 ![](https://www.denverlibrary.org/sites/dplorg/files/2016/07/hollywood-remakes.jpeg)
 
-
-
+</center>
 
 The latest trend in Hollywood filmmaking seems to be the remake. 2018 saw recreations of Halloween, Robin Hood, Ready Player One, and a third How the Grinch Stole Christmas. Remakes have become a popular way to retell old stories through new lenses and reimagined characters. But is this lazy filmmaking? Can the remakes stand up to their predecessors? Our goal with this project was to see whether the perception we have about remakes is true. To measure this, we isolated the IMDB ratings for 59 movies and their remakes. 
 
@@ -129,11 +130,11 @@ ggplot(data = plottingdata, aes(x = title, y = diff_rating, fill = betterrated))
 
 Our visualization shows our assumption was correct: remakes generally do rate worse than their originals. Some particularly bad remakes were the 2016 Ghostbusters, the 1998 Psycho, and the 2006 The Wicker Man. Conversely, the Godzilla and Last House on the Left out-rated their originals.
 
-
+<center>
 
 ![](http://1.bp.blogspot.com/-RJOmG9_eOs0/U4knEmzPK-I/AAAAAAAAAGk/uUco5oaDjq0/s1600/Godzilla+VS.jpg)
 
-
+</center>
 
 
 
@@ -141,14 +142,15 @@ The list of better-rated originals contains movies of all genres, however the tw
 
 So why is it that people tend to like the originals more than the remakes? Perhaps it is because original movie had been out for longer and had more time to draw a following. It could also be because fans of the original might be more critical of the remake than there being fans of the remake criticizing the original. For example, the 2016 Ghostbusters remake was rated a lot lower than the 1984 original. The 2016 Ghostbusters swapped the male-led cast of the beloved original with an all female-led cast ^[https://fivethirtyeight.com/features/ghostbusters-is-a-perfect-example-of-how-internet-ratings-are-broken/], which stirred up some controversy from mainly male fans of the original. Because the ratings of imdb are aggregated they tend to reflect the loudest voices, which are perhaps people who feel strongly about the original of the film. Also a 2015 study showed that because men are more likely to rate movies on the internet than women they tend to skew movie ratings on imdb,causing male centric movies being rated higher that could explain the discrepancy^[https://fivethirtyeight.com/features/what-if-online-movie-ratings-werent-based-almost-entirely-on-what-men-think/].  
 
+<center>
 
 ![](https://independentaustralia.net/_lib/slir/w900-h600/https://independentaustralia.net/i/article/img/article-9324-hero.jpg)
 
+</center>
 
 How about remakes that were rated more highly? This could be because the remake have more well known actors and actresses to today’s modern audience. Or that maybe more young people see the remake over the original and they are more likely to rate the films online. It could be that the the original was rated low to begin with allowing the remake to surpass it more easily. In addition, the advances in filmmaking technology and CGI have revitalized dated special effects, which are a big component of action and thrillers’ popularities.
 
 The data says it all: don’t mess with the original! If film companies want to make a remake, they should stay away from classics and fan favorites. They should also try to pick a movie that would be improved by the advances in film technology. However, the trend in the data suggests that remakes are a risky strategy, and the best advice film companies can follow is not to make them at all.
-
 
 
 ^[Github Repository: https://github.com/JuliaClaireLee/mp4.git]
