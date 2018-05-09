@@ -4,7 +4,6 @@ author: "Julia Lee, Stella Li, Irene Ryan"
 date: "4/23/2018"
 output:
   html_document:
-     theme: cosmo 
     code_folding: hide
     
 ---
@@ -17,6 +16,7 @@ library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(mosaic)
+library(RSQLite)
 ```
 
 
